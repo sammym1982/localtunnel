@@ -46,6 +46,10 @@ const { argv } = yargs
     alias: 'open',
     describe: 'Opens the tunnel URL in your browser',
   })
+  .options('t', {
+    alias: 'token',
+    describe: 'bearer auth token',
+  })
   .option('print-requests', {
     describe: 'Print basic request info',
   })
@@ -73,6 +77,7 @@ if (typeof argv.port !== 'number') {
     local_key: argv.localKey,
     local_ca: argv.localCa,
     allow_invalid_cert: argv.allowInvalidCert,
+    token: argv.token,
   }).catch(err => {
     throw err;
   });
